@@ -6,7 +6,7 @@ from celery.schedules import crontab
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bankingsystem.settings")
 
-app = Celery('proj')
+app = Celery('aaaa')
 
 # Using a string here means the worker don't have to serialize
 # the configuration object to child processes.
@@ -19,12 +19,12 @@ app.autodiscover_tasks()
 
 
 app.conf.beat_schedule = {
-    # Executes 1st day of every Month.
+
     'every-month': {
         'task': 'count_interest',
         # crontab can be changes to change Schedule
         # http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html
-        'schedule': crontab(0, 0, day_of_month='1'),
+        'schedule': crontab(),
     },
 }
 
